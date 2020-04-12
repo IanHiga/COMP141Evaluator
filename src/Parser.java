@@ -22,6 +22,9 @@ public class Parser {
 			throw new ParserException("Empty List!");
 		}		
 		out += root.toString();
+		Evaluator eval = new Evaluator();
+		out += eval.evaluateTree(root);
+		
 		return out;
 	}
 
