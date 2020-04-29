@@ -64,11 +64,8 @@ public class MainApplication {
 			}
 
 			do {
-				System.out.println("Scanning line...\n");
 				nextLine = scanInputLine(scan.nextLine());
-				System.out.println("Scan input line returned this:\n" + nextLine);
 				nextLine = parseLine(nextLine);
-				System.out.println("Done. Line contents:\n" + nextLine);
 				nextLineTokens += nextLine;
 			} while(scan.hasNext());
 			try {
@@ -125,7 +122,6 @@ public class MainApplication {
 		output += "\nAST:\n";
 		Parser parse = new Parser();
 		output += parse.parseList(tokens);
-		System.out.println("Parseline finished.\n" + output);
 		return output;
 	}
 	

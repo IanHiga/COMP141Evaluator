@@ -16,7 +16,7 @@ public class Parser {
 		tokens = (LinkedList<Token>) tokenList.clone();
 		next = tokens.getFirst();
 		
-		Tree root = parseExpression();
+		Tree root = parseStatement();
 		
 		if(next == null) {
 			throw new ParserException("Empty List!");
