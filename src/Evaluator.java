@@ -14,7 +14,7 @@ public class Evaluator {
 			e.printStackTrace();
 		}
 		
-		return ("\nOutput: " + tokenStack.get(0).getValue());
+		return ("\nOutput: " + tokenStack.get(0).getValue() + "\n\n\n");
 	}
 	
 	private void evalLeaf(Tree curRoot) throws Exception {
