@@ -8,11 +8,19 @@ public class Tree {
 	private Token value;
 	private Tree left;
 	private Tree right;
+	private Tree middle;
 	
 	public Tree(Token root, Tree l, Tree r) {
 		value = root;
 		left = l;
 		right = r;
+	}
+	
+	public Tree(Token root, Tree l, Tree m, Tree r) {
+		value = root;
+		left = l;
+		right = r;
+		middle = m;
 	}
 	
 	public Tree getLeft() {
@@ -21,6 +29,10 @@ public class Tree {
 	
 	public Tree getRight() {
 		return right;
+	}
+	
+	public Tree getMid() {
+		return middle;
 	}
 	
 	public Token getValue() {
@@ -34,6 +46,10 @@ public class Tree {
 		//Left Children
 		if(left != null) {
 			out += left.toString();
+		}
+		//Middle Children
+		if(middle != null) {
+			out += middle.toString();
 		}
 		//Right Children
 		if(right != null) {
