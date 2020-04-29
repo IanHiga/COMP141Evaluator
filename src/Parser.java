@@ -22,8 +22,10 @@ public class Parser {
 			throw new ParserException("Empty List!");
 		}		
 		out += root.toString();
+		/*
 		Evaluator eval = new Evaluator();
 		out += eval.evaluateTree(root);
+		*/
 		
 		return out;
 	}
@@ -191,15 +193,16 @@ public class Parser {
 			}
 			else {
 				//ERROR
-				System.out.println("FATAL ERROR 1. Token was " + next.getValue() + " " + next.getType());
+				Token err = new Token("ERROR", "FATAL ERROR. Expected token ')', token was " + next.getValue() + " -> " + next.getType());
+				return(new Tree(err, null, null));
 			}
 			return node;
 		}
 		else {
 			if(!isElement()) {
 				//ERROR
-				System.out.println("FATAL ERROR 2. Token was " + next.getValue() + " " + next.getType());
-				return null;
+				Token err = new Token("ERROR", "FATAL ERROR. Expected token '(', token was  " + next.getValue() + " -> " + next.getType());
+				return(new Tree(err, null, null));
 			}
 			Token op = next;
 			nextToken();

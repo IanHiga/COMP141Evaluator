@@ -37,7 +37,7 @@ public class MainApplication {
 			//PROCEED WITH SCAN
 			Scanner scan;			
 			String nextLine = "";
-			String nextLineTokens = "";
+			String nextLineTokens = "Tokens:\n";
 			try {
 				scan = new Scanner(in);
 			} catch (FileNotFoundException e) {
@@ -64,22 +64,18 @@ public class MainApplication {
 			}
 
 			do {
-				nextLine = scanInputLine(scan.nextLine());
-				nextLine = parseLine(nextLine);
-				nextLineTokens += nextLine;
+				nextLineTokens += scanInputLine(scan.nextLine());
 			} while(scan.hasNext());
+			nextLine += parseLine(nextLineTokens);
 			try {
-				tokenOut.write(nextLineTokens);
-			} catch (IOException e) {
+				tokenOut.write(nextLine);
+			} catch (IOException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-				scan.close();
-				return;
+				e1.printStackTrace();
 			}
 			try {
 				tokenOut.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			scan.close();
@@ -96,9 +92,7 @@ public class MainApplication {
 		String output = in;
 		Scanner lineScanner = new Scanner(in);
 		LinkedList<Token> tokens = new LinkedList<Token>();
-		
-		//Skip the "Line: <Expression>" and whitespace line from previous formatting
-		lineScanner.nextLine();
+		//Skip Label and newline
 		lineScanner.nextLine();
 		
 		//Identify all tokens and place into list
@@ -131,7 +125,7 @@ public class MainApplication {
 		String tokenType = "";
 		String temp = "";
 		String next = "";
-		String tokens = "Line: " + in + "\nTokens:\n";
+		String tokens = "";
 		
 		for(int i = 0; i < in.length(); i++) {
 			next = "";
@@ -171,7 +165,6 @@ public class MainApplication {
 				temp += next;
 			}
 		}
-		tokens += "\n";
 		return(tokens);
 	}
 }
